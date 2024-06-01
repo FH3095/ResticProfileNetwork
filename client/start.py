@@ -33,12 +33,12 @@ class Download:
     def downloadConfigs(self):
         self.downloadTo("conf-all.yaml", "conf-all.yaml")
         self.downloadTo("conf-" + self.os.NAME + ".yaml", "conf-os.yaml")
-        self.downloadTo("conf-" + self.username + ".yaml", "conf-user.yaml", isPublic = False)
+        self.downloadTo("conf-" + self.username + ".yaml", "conf-user.yaml", isPublic=False)
 
-    def downloadTo(self, file, targetName, isPublic = True):
+    def downloadTo(self, file, targetName, isPublic=True):
         url = self.url + (isPublic and "public/" or "private/") + file
-        with requests.get(url, auth = (CONFIG.username, CONFIG.password), headers = {"Accept-Encoding": None},
-                          timeout = 60, verify = "server.crt", stream = True) as response, open(targetName, mode = "wb") as target:
+        with requests.get(url, auth=(CONFIG.username, CONFIG.password), headers={"Accept-Encoding": None},
+                          timeout=60, verify="server.crt", stream=True) as response, open(targetName, mode="wb") as target:
             response.raise_for_status()
             funcs.copy(response.raw, target)
 
