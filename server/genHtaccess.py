@@ -36,6 +36,7 @@ SEND_MAIL_HTACCESS = """
 	AuthName "get"
 	AuthBasicProvider file
 	AuthUserFile "{ScriptPath}/files/.htpasswd"
+	Require valid-user
 
 	Options +ExecCGI
 	SetHandler cgi-script
