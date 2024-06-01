@@ -3,7 +3,8 @@
 /server/files/.htaccess
 /server/files/.htpasswd
 /server/files/users.json
-/server/files/public/
+/server/files/public/restic-*
+/server/files/public/resticprofile-*
 /server/files/private/
 /client/network.ini
 /client/restic*

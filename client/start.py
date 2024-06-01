@@ -31,9 +31,10 @@ class Download:
         self.downloadTo("resticprofile-" + self._buildOsName(), "resticprofile.exe")
 
     def downloadConfigs(self):
+        self.downloadTo("conf-mail.tpl", "conf-mail.tpl")
         self.downloadTo("conf-all.yaml", "conf-all.yaml")
         self.downloadTo("conf-" + self.os.NAME + ".yaml", "conf-os.yaml")
-        self.downloadTo("conf-" + self.username + ".yaml", "conf-user.yaml", isPublic=False)
+        self.downloadTo("conf-" + self.username + ".yaml", "profiles.yaml", isPublic=False)
 
     def downloadTo(self, file, targetName, isPublic=True):
         url = self.url + (isPublic and "public/" or "private/") + file
