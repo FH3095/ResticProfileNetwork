@@ -32,9 +32,9 @@ class Download:
 
     def downloadConfigs(self):
         self.downloadTo("conf-mail.tpl", "conf-mail.tpl")
-        self.downloadTo("conf-all.yaml", "conf-all.yaml")
-        self.downloadTo("conf-" + self.os.NAME + ".yaml", "conf-os.yaml")
-        self.downloadTo("conf-" + self.username + ".yaml", "profiles.yaml", isPublic=False)
+        self.downloadTo("conf-all.toml", "conf-all.toml")
+        self.downloadTo("conf-" + self.os.NAME + ".toml", "conf-os.toml")
+        self.downloadTo("conf-" + self.username + ".toml", "profiles.toml", isPublic=False)
 
     def downloadTo(self, file, targetName, isPublic=True):
         url = self.url + (isPublic and "public/" or "private/") + file

@@ -8,8 +8,10 @@
 /server/files/public/.htaccess
 /server/files/public/restic-*
 /server/files/public/resticprofile-*
-/server/files/public/*.yaml
+/server/files/public/*.toml
 /server/files/private/
-/client/network.ini
 /client/restic*
 /client/conf-*
+/client/network.ini
+/client/profiles.toml
+/client/password.txt
