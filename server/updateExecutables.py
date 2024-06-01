@@ -41,7 +41,7 @@ class BinaryDl:
             with bz2.open(tempFile, mode="rb") as src, open(targetFile, mode="wb") as dst:
                 funcs.copy(src, dst)
                 return
-        
+
         shutil.unpack_archive(tempFile, tempDir)
         Path(tempFile).unlink()
         files = list(tempDir.glob(self.exeName + "*"))
@@ -57,7 +57,7 @@ class BinaryDl:
         print("Found executable", self.exeName + "-" + self.osType + "-" + self.archType, "with url", dlUrl)
         dlFilename = urllib.parse.urlparse(dlUrl).path
         dlFilename = dlFilename[dlFilename.rindex("/")+1:]
-        with tempfile.TemporaryDirectory(delete=True) as directory:
+        with tempfile.TemporaryDirectory() as directory:
             tempFile = os.path.join(directory, dlFilename)
             with open(tempFile, mode="wb") as dlFile, requests.get(dlUrl, timeout=30, stream=True) as dlRequest:
                 funcs.copy(dlRequest.raw, dlFile)
