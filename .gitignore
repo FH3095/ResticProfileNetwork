@@ -1,5 +1,6 @@
 
 /__pycache__
+/server/files/.htpasswd
 /server/files/users.json
 /server/files/public/
 /server/files/private/
