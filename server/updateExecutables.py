@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 
 import sys, os, re, urllib.parse, requests, json, tempfile, shutil, bz2
 from pathlib import Path
