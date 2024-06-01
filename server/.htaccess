@@ -1,5 +1,0 @@
-
-<Files "sendMail.py">
-	Options +ExecCGI
-	SetHandler cgi-script
-</Files>
