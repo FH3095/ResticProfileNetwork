@@ -30,10 +30,25 @@ PRIVATE_FILES_SECTION = """
 </Files>
 """
 
+SEND_MAIL_HTACCESS = """
+<Files "sendMail.py">
+	AuthType Basic
+	AuthName "get"
+	AuthBasicProvider file
+	AuthUserFile "{ScriptPath}/files/.htpasswd"
+
+	Options +ExecCGI
+	SetHandler cgi-script
+</Files>
+"""
 
 # Create private and public sub-directories
 os.makedirs("files/public", exist_ok=True)
 os.makedirs("files/private", exist_ok=True)
+
+# Write sendMail htaccess
+with open(".htaccess", mode="wt", encoding=ENCODING) as file:
+    file.write(SEND_MAIL_HTACCESS.format(ScriptPath=SCRIPT_PATH))
 
 # Read users and write files/.htpasswd
 users = None
