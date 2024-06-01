@@ -3,3 +3,6 @@
 /server/files/users.json
 /server/files/public/
 /server/files/private/
+/client/network.ini
+/client/restic*
+/client/conf-*

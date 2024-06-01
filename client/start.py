@@ -10,7 +10,7 @@ class Config:
     def __init__(self):
         parser = configparser.ConfigParser()
         parser.read("network.ini")
-        self.url = "https://" + parser["Config"]["URL"] + "/"
+        self.url = parser["Config"]["URL"] + "/"
         self.username = parser["Config"]["Username"]
         self.password = parser["Config"]["Password"]
 CONFIG = Config()
@@ -32,7 +32,7 @@ class Download:
 
     def downloadConfigs(self):
         self.downloadTo("conf-all.yaml", "conf-all.yaml")
-        self.downloadTo("conf-" + self.os.value + ".yaml", "conf-os.yaml")
+        self.downloadTo("conf-" + self.os.NAME + ".yaml", "conf-os.yaml")
         self.downloadTo("conf-" + self.username + ".yaml", "conf-user.yaml", isPublic = False)
 
     def downloadTo(self, file, targetName, isPublic = True):
