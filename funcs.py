@@ -64,6 +64,6 @@ match platform.machine().lower():
     case "amd64" | "x86_64":
         ARCH_TYPE = ArchType.AMD64
     case "arm64" | "aarch64":
-        ARCH_TYPE = ARchType.ARM64
+        ARCH_TYPE = ArchType.ARM64
     case _:
         raise RuntimeError("Unknown architecture " + str(platform.machine()))
