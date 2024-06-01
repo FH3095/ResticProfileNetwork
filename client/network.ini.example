@@ -1,4 +1,4 @@
 [Config]
-URL=https://homeserver/restic/server
+URL=https://example.com/restic/server
 Username=ExampleUser1
 Password=ExamplePassword1

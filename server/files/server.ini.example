@@ -1,0 +1,9 @@
+
+[SendMail]
+Host = localhost
+Port = 25
+SSL = false
+User =
+Password =
+Sender = sender@example.com
+Recipient = recipient@example.com
