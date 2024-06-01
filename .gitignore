@@ -5,6 +5,7 @@
 /server/files/users.json
 /server/files/public/restic-*
 /server/files/public/resticprofile-*
+/server/files/public/*.yaml
 /server/files/private/
 /client/network.ini
 /client/restic*
