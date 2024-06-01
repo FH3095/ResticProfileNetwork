@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
 import os, json, base64, hashlib
+from pathlib import Path
 
 ENCODING = "ascii"
-SCRIPT_PATH = os.path.abspath(os.path.dirname(__file__))
+SCRIPT_PATH = Path(__file__).parent.absolute()
 
 FILES_HTACCESS = """
 Require all denied
@@ -44,8 +45,8 @@ SEND_MAIL_HTACCESS = """
 """
 
 # Create private and public sub-directories
-os.makedirs("files/public", exist_ok=True)
-os.makedirs("files/private", exist_ok=True)
+SCRIPT_PATH.joinpath("files", "public").mkdir(exist_ok=True)
+SCRIPT_PATH.joinpath("files", "private").mkdir(exist_ok=True)
 
 # Write sendMail htaccess
 with open(".htaccess", mode="wt", encoding=ENCODING) as file:
