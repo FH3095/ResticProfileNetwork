@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import sys, os, json, configparser, smtplib
+import sys, os, json, configparser, smtplib, urllib.parse
 from email.message import EmailMessage
 
 BODY_DATA = sys.stdin.read()
@@ -19,7 +19,7 @@ if not "QUERY_STRING" in os.environ or not os.environ["QUERY_STRING"]:
         print("Status: 400 Bad Request")
         print()
         print("Missing Query-Parameters")
-SUBJECT = urllib.parse.parse_qs(os.environ["QUERY_STRING"]).get("subject", default=[""])[0]
+SUBJECT = urllib.parse.parse_qs(os.environ["QUERY_STRING"]).get("subject", [""])[0]
 if not SUBJECT:
         print("Status: 400 Bad Request")
         print()
@@ -48,7 +48,7 @@ def smtpLogin(smtp):
 
 
 msg = EmailMessage()
-msg["Subject"] = "Restic user " + os.environ["REMOTE_USER"]
+msg["Subject"] = "Restic: User " + os.environ["REMOTE_USER"] + ": " + SUBJECT
 msg["From"] = CONFIG["sender"]
 msg["To"] = CONFIG["recipient"]
 msg.set_content(BODY_DATA)
