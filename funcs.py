@@ -1,5 +1,11 @@
 
-import platform
+import platform, os
+from pathlib import Path
+
+def gotoClientDir():
+    os.chdir(Path(__file__).parent.joinpath("client"))
+def gotoServerDir():
+    os.chdir(Path(__file__).parent.joinpath("server"))
 
 def copy(src, dst):
     data = bytearray(1024)

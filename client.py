@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-import sys, os, platform, configparser, requests
-sys.path.insert(0, os.path.abspath(".."))
+import configparser, requests
 from funcs import OsType
 import funcs
 
@@ -13,7 +12,6 @@ class Config:
         self.url = parser["Config"]["URL"] + "/"
         self.username = parser["Config"]["Username"]
         self.password = parser["Config"]["Password"]
-CONFIG = Config()
 
 
 class Download:
@@ -43,6 +41,9 @@ class Download:
             response.raise_for_status()
             funcs.copy(response.raw, target)
 
+
+funcs.gotoClientDir()
+CONFIG = Config()
 
 dl = Download()
 dl.downloadExecutables()

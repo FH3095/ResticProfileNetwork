@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
 import sys, os, re, urllib.parse, requests, json, tempfile, shutil, bz2
-from pathlib import Path
-sys.path.insert(0, os.path.abspath(".."))
 import funcs
+from pathlib import Path
 
 RESTIC_JSON_URL = "https://api.github.com/repos/restic/restic/releases/latest"
 RESTICPROFILE_JSON_URL = "https://api.github.com/repos/creativeprojects/resticprofile/releases/latest"
@@ -62,6 +61,8 @@ class BinaryDl:
             with open(tempFile, mode="wb") as dlFile, requests.get(dlUrl, timeout=30, stream=True) as dlRequest:
                 funcs.copy(dlRequest.raw, dlFile)
             self.unzip(tempFile, targetFile)
+
+funcs.gotoServerDir()
 
 Path(Path(__file__).parent, "files", "public").mkdir(parents=True, exist_ok=True)
 for osType, archType in DL_MATRIX:
