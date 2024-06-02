@@ -1,5 +1,9 @@
 
 /__pycache__
+/build
+/dist
+/venv
+/client.spec
 /server/.htaccess
 /server/files/.htaccess
 /server/files/.htpasswd
