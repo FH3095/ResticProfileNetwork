@@ -2,9 +2,12 @@
 
 import os, json, base64, hashlib
 from pathlib import Path
+import funcs
+funcs.gotoServerDir()
+
 
 ENCODING = "ascii"
-SCRIPT_PATH = Path(__file__).parent.absolute()
+SCRIPT_PATH = Path.cwd().absolute()
 
 FILES_HTACCESS = """
 Require all denied

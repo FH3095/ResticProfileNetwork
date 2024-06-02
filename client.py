@@ -3,6 +3,7 @@
 import configparser, requests
 from funcs import OsType
 import funcs
+funcs.gotoClientDir()
 
 
 class Config:
@@ -42,7 +43,6 @@ class Download:
             funcs.copy(response.raw, target)
 
 
-funcs.gotoClientDir()
 CONFIG = Config()
 
 dl = Download()
