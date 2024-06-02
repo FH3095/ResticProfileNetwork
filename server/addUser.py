@@ -3,7 +3,7 @@
 import sys, json, secrets
 from pathlib import Path
 
-sys.argv = ["a.py", "t3"]
+#sys.argv = ["a.py", "t3"]
 
 ENCODING = "ascii"
 PASSWORD_BYTES = 24 # should be divisible by 3
