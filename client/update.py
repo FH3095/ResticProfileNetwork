@@ -13,9 +13,9 @@ class Download:
         self.arch = funcs.ARCH_TYPE
 
     def downloadConfigs(self):
-        self.downloadTo("conf-all.toml", "conf-all.toml")
-        self.downloadTo("conf-" + self.os.NAME + ".toml", "conf-os.toml")
-        self.downloadTo("conf-" + self.username + ".toml", "profiles.toml", isPublic=False)
+        self.downloadTo("conf-all.yaml", "conf-all.yaml")
+        self.downloadTo("conf-" + self.os.NAME + ".yaml", "conf-os.yaml")
+        self.downloadTo("conf-" + self.username + ".yaml", "profiles.yaml", isPublic=False)
 
     def downloadTo(self, file, targetName, isPublic=True):
         url = self.url + (isPublic and "public/" or "private/") + file
@@ -32,18 +32,19 @@ class Schedules:
 
     def unschedule(self):
         log("Unschedule")
-        log(runProcess("resticprofile" + self.os.EXE_SUFFIX, "unschedule", "--all"))
+        log(runProcess("resticprofile" + self.os.EXE_SUFFIX, "unschedule", "--all", ignoreError=True))
 
     def schedule(self):
         log("Schedule")
         log(runProcess("resticprofile" + self.os.EXE_SUFFIX, "schedule", "--all"))
 
 
-def runProcess(*cmdLine):
+def runProcess(*cmdLine, ignoreError=False):
     result = subprocess.run(cmdLine, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     if result.returncode != 0:
         log("Cant run", cmdLine, "Output:", result.stdout)
-        result.check_returncode()
+        if not ignoreError:
+            result.check_returncode()
     return result.stdout
 
 

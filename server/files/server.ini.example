@@ -7,3 +7,6 @@ User =
 Password =
 Sender = sender@example.com
 Recipient = recipient@example.com
+
+[Restic]
+DataDir = /opt/restic-data

@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
-import os, json, base64, hashlib
+import os, json, base64, hashlib, shutil, configparser
 from pathlib import Path
 
 
 ENCODING = "ascii"
 SCRIPT_PATH = Path.cwd().absolute()
+CONFIG = configparser.ConfigParser()
+CONFIG.read(SCRIPT_PATH.joinpath("files", "server.ini"))
 
 FILES_HTACCESS = """
 Require all denied
@@ -62,6 +64,8 @@ with open("files/.htpasswd", mode="wt", encoding=ENCODING) as file:
 		hash = hashlib.sha1(password.encode(ENCODING))
 		hash = base64.standard_b64encode(hash.digest()).decode(ENCODING)
 		print(username, ":{SHA}", hash, sep="", file=file)
+# Copy htaccess to restics rest-server
+shutil.copyfile(SCRIPT_PATH.joinpath("files", ".htpasswd"), Path(CONFIG["Restic"]["DataDir"]).joinpath(".htpasswd"))
 
 # Write generic files/.htaccess
 with open("files/.htaccess", mode="wt", encoding=ENCODING) as file:

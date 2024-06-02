@@ -13,6 +13,7 @@
 /server/files/private/
 /client/restic*
 /client/conf-*
+/client/log.txt
 /client/network.ini
-/client/profiles.toml
+/client/profiles.yaml
 /client/password.txt
