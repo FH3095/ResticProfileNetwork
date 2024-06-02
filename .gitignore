@@ -1,12 +1,12 @@
 
 **/__pycache__/
+**/.htaccess
+**/.htpasswd
 /build
 /dist
 /venv
 /client.spec
 /server/.htaccess
-/server/files/.htaccess
-/server/files/.htpasswd
 /server/files/users.json
 /server/files/server.ini
 /server/files/public/
