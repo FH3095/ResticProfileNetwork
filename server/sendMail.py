@@ -48,7 +48,7 @@ def smtpLogin(smtp):
 
 
 msg = EmailMessage()
-msg["Subject"] = "Restic: User " + os.environ["REMOTE_USER"] + ": " + SUBJECT
+msg["Subject"] = "Restic: " + os.environ["REMOTE_USER"] + ": " + SUBJECT
 msg["From"] = CONFIG["sender"]
 msg["To"] = CONFIG["recipient"]
 msg.set_content(BODY_DATA)

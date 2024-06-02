@@ -1,22 +1,8 @@
 #!/usr/bin/env python3
 
-import io, configparser, requests, subprocess, traceback
+import io, requests, subprocess, traceback
 from funcs import OsType
 import funcs
-
-
-class Config:
-    def __init__(self):
-        parser = configparser.ConfigParser()
-        parser.read("network.ini")
-        self.url = parser["Config"]["URL"] + "/"
-        self.username = parser["Config"]["Username"]
-        self.password = parser["Config"]["Password"]
-        self.ssl = parser["Config"]["SSL"]
-        if self.ssl.lower() == "true":
-            self.ssl = True
-        elif self.ssl.lower() == "false":
-            self.ssl = False
 
 
 class Download:
@@ -91,6 +77,6 @@ def main():
         traceback.print_exc()
     funcs.sendMail(CONFIG.url + "sendMail.py", (CONFIG.username, CONFIG.password), CONFIG.ssl, "Update", OUT.getvalue())
 
-CONFIG = Config()
+CONFIG = funcs.Config()
 
 main()

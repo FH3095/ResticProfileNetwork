@@ -1,5 +1,5 @@
 
-import platform, urllib.parse, requests
+import platform, urllib.parse, requests, configparser
 
 def copy(src, dst):
     data = bytearray(1024)
@@ -10,6 +10,19 @@ def sendMail(url, auth, ssl, subject, text):
     url = url + "?" + urllib.parse.urlencode({"subject": subject})
     with requests.get(url, data=text, auth=auth, timeout=60, verify=ssl, stream=True) as response:
         response.raise_for_status()
+
+class Config:
+    def __init__(self):
+        parser = configparser.ConfigParser()
+        parser.read("network.ini")
+        self.url = parser["Config"]["URL"] + "/"
+        self.username = parser["Config"]["Username"]
+        self.password = parser["Config"]["Password"]
+        self.ssl = parser["Config"]["SSL"]
+        if self.ssl.lower() == "true":
+            self.ssl = True
+        elif self.ssl.lower() == "false":
+            self.ssl = False
 
 class OsType:
     def __init__(self, name, exeSuffix, resticName, resticProfileName):
