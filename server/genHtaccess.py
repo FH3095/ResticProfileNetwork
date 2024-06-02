@@ -2,8 +2,6 @@
 
 import os, json, base64, hashlib
 from pathlib import Path
-import funcs
-funcs.gotoServerDir()
 
 
 ENCODING = "ascii"

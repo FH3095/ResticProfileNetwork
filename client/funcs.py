@@ -1,17 +1,15 @@
 
-import platform, os
-from pathlib import Path
-
-def gotoClientDir():
-    os.chdir(Path.cwd().joinpath("client"))
-def gotoServerDir():
-    os.chdir(Path.cwd().joinpath("server"))
+import platform, urllib.parse, requests
 
 def copy(src, dst):
     data = bytearray(1024)
     while (dataLen := src.readinto(data)) != 0:
         dst.write(memoryview(data)[:dataLen])
 
+def sendMail(url, auth, ssl, subject, text):
+    url = url + "?" + urllib.parse.urlencode({"subject": subject})
+    with requests.get(url, data=text, auth=auth, timeout=60, verify=ssl, stream=True) as response:
+        response.raise_for_status()
 
 class OsType:
     def __init__(self, name, exeSuffix, resticName, resticProfileName):

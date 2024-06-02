@@ -1,5 +1,5 @@
 
-/__pycache__
+**/__pycache__/
 /build
 /dist
 /venv
@@ -9,10 +9,7 @@
 /server/files/.htpasswd
 /server/files/users.json
 /server/files/server.ini
-/server/files/public/.htaccess
-/server/files/public/restic-*
-/server/files/public/resticprofile-*
-/server/files/public/*.toml
+/server/files/public/
 /server/files/private/
 /client/restic*
 /client/conf-*

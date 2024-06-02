@@ -10,11 +10,20 @@ if not BODY_DATA:
 	print()
 	print("Missing body")
 	sys.exit(0)
-if not "REMOTE_USER" in os.environ:
+if not "REMOTE_USER" in os.environ or not os.environ["REMOTE_USER"]:
 	print("Status: 400 Bad Request")
 	print()
 	print("Missing authenticated user")
 	sys.exit(0)
+if not "QUERY_STRING" in os.environ or not os.environ["QUERY_STRING"]:
+        print("Status: 400 Bad Request")
+        print()
+        print("Missing Query-Parameters")
+SUBJECT = urllib.parse.parse_qs(os.environ["QUERY_STRING"]).get("subject", default=[""])[0]
+if not SUBJECT:
+        print("Status: 400 Bad Request")
+        print()
+        print("Empty subject-parameter")
 print()
 
 
