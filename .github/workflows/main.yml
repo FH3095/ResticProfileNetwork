@@ -1,0 +1,23 @@
+on:
+  push:
+    tags: "*"
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['windows-latest', 'ubuntu-latest']
+
+    steps:
+    - uses: actions/checkout@latest
+    - uses: actions/setup-python@latest
+      with:
+        python-version: 3.12
+    - run: pip install -r requirements.txt pyinstaller
+    - run: pyinstaller --onefile --clean client/sendLog.py
+    - run: pyinstaller --onefile --clean client/update.py
+    - uses: actions/upload-artifact@latest
+      with:
+        path: dist/*
