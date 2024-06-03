@@ -14,7 +14,7 @@ def sendMail(url, auth, ssl, subject, text):
 class Config:
     def __init__(self):
         parser = configparser.ConfigParser()
-        parser.read("network.ini")
+        parser.read("client.ini")
         self.url = parser["Config"]["URL"] + "/"
         self.username = parser["Config"]["Username"]
         self.password = parser["Config"]["Password"]
