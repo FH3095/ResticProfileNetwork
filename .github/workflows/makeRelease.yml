@@ -27,7 +27,7 @@ jobs:
     - uses: softprops/action-gh-release@v2.0.5
       with:
         draft: true
-        files: ${{ github.workspace }}/bin-${{ matrix.os }}.zip
+        files: bin-${{ matrix.os }}.zip
         token: ${{ secrets.MAKE_RELEASE_TOKEN }}
     - uses: actions/upload-artifact@v4.3.3
       with:
